@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="25" passed="25" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-04-28T16:36:13 IST" name="Default suite" finished-at="2024-04-28T16:40:12 IST" duration-ms="238874">
+    <groups>
+    </groups>
+    <test started-at="2024-04-28T16:36:13 IST" name="Default test" finished-at="2024-04-28T16:40:12 IST" duration-ms="238874">
+      <class name="selenium.NewTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:36:13 IST" name="setUp" finished-at="2024-04-28T16:36:21 IST" duration-ms="7878" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="ScrollHomePage()[pri:1, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:36:21 IST" name="ScrollHomePage" finished-at="2024-04-28T16:36:42 IST" duration-ms="21178" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ScrollHomePage -->
+        <test-method signature="RegistrationPage()[pri:2, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:36:42 IST" name="RegistrationPage" finished-at="2024-04-28T16:37:05 IST" duration-ms="23295" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- RegistrationPage -->
+        <test-method signature="LoginPage()[pri:3, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:37:05 IST" name="LoginPage" finished-at="2024-04-28T16:37:13 IST" duration-ms="7676" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginPage -->
+        <test-method signature="aboutPage()[pri:4, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:37:13 IST" name="aboutPage" finished-at="2024-04-28T16:37:16 IST" duration-ms="3294" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- aboutPage -->
+        <test-method signature="doctorsPage()[pri:5, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:37:16 IST" name="doctorsPage" finished-at="2024-04-28T16:37:47 IST" duration-ms="30931" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doctorsPage -->
+        <test-method signature="Blog()[pri:6, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:37:47 IST" name="Blog" finished-at="2024-04-28T16:37:51 IST" duration-ms="4056" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Blog -->
+        <test-method signature="BlogDetails()[pri:7, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:37:51 IST" name="BlogDetails" finished-at="2024-04-28T16:38:07 IST" duration-ms="15686" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BlogDetails -->
+        <test-method signature="PostComment()[pri:8, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:38:07 IST" name="PostComment" finished-at="2024-04-28T16:38:26 IST" duration-ms="19140" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PostComment -->
+        <test-method signature="GoToBlog()[pri:9, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:38:26 IST" name="GoToBlog" finished-at="2024-04-28T16:38:30 IST" duration-ms="4389" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- GoToBlog -->
+        <test-method signature="Contact()[pri:10, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:38:30 IST" name="Contact" finished-at="2024-04-28T16:38:32 IST" duration-ms="1268" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Contact -->
+        <test-method signature="ScrollContact()[pri:11, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:38:32 IST" name="ScrollContact" finished-at="2024-04-28T16:38:38 IST" duration-ms="6524" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ScrollContact -->
+        <test-method signature="GoogleMap()[pri:12, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:38:38 IST" name="GoogleMap" finished-at="2024-04-28T16:38:49 IST" duration-ms="10547" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- GoogleMap -->
+        <test-method signature="testMapNavigation()[pri:13, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:38:49 IST" name="testMapNavigation" finished-at="2024-04-28T16:39:01 IST" duration-ms="12316" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMapNavigation -->
+        <test-method signature="ScrollUpContact()[pri:14, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:39:01 IST" name="ScrollUpContact" finished-at="2024-04-28T16:39:14 IST" duration-ms="12747" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ScrollUpContact -->
+        <test-method signature="GoToHome()[pri:15, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:39:14 IST" name="GoToHome" finished-at="2024-04-28T16:39:15 IST" duration-ms="1305" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- GoToHome -->
+        <test-method signature="GoToRegistrationPage()[pri:16, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:39:15 IST" name="GoToRegistrationPage" finished-at="2024-04-28T16:39:16 IST" duration-ms="1176" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- GoToRegistrationPage -->
+        <test-method signature="TestLogin(java.lang.String,java.lang.String)[pri:17, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:39:16 IST" name="TestLogin" data-provider="TestData" finished-at="2024-04-28T16:39:20 IST" duration-ms="3367" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[arushi@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[password123]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestLogin -->
+        <test-method signature="TestLogin(java.lang.String,java.lang.String)[pri:17, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:39:20 IST" name="TestLogin" data-provider="TestData" finished-at="2024-04-28T16:39:23 IST" duration-ms="3369" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[jaskirat]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[123jaskirat]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestLogin -->
+        <test-method signature="TestLogin(java.lang.String,java.lang.String)[pri:17, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:39:23 IST" name="TestLogin" data-provider="TestData" finished-at="2024-04-28T16:39:26 IST" duration-ms="3388" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[jaskirat@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[jaskirat]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestLogin -->
+        <test-method signature="TestLogin(java.lang.String,java.lang.String)[pri:17, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:39:26 IST" name="TestLogin" data-provider="TestData" finished-at="2024-04-28T16:39:30 IST" duration-ms="3359" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[sanjeev@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[sanjeev]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestLogin -->
+        <test-method signature="GoToMainPage()[pri:18, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:39:30 IST" name="GoToMainPage" finished-at="2024-04-28T16:39:35 IST" duration-ms="5499" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- GoToMainPage -->
+        <test-method signature="DetailsPage()[pri:19, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:39:35 IST" name="DetailsPage" finished-at="2024-04-28T16:39:42 IST" duration-ms="6704" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- DetailsPage -->
+        <test-method signature="ScrollDetails()[pri:20, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:39:42 IST" name="ScrollDetails" finished-at="2024-04-28T16:39:44 IST" duration-ms="2576" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ScrollDetails -->
+        <test-method signature="EnterDeatils()[pri:21, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:39:44 IST" name="EnterDeatils" finished-at="2024-04-28T16:39:56 IST" duration-ms="11217" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- EnterDeatils -->
+        <test-method signature="ConfirmationPage()[pri:22, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:39:56 IST" name="ConfirmationPage" finished-at="2024-04-28T16:40:11 IST" duration-ms="15110" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ConfirmationPage -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:selenium.NewTest@4b8ee4de]" started-at="2024-04-28T16:40:11 IST" name="tearDown" finished-at="2024-04-28T16:40:12 IST" duration-ms="753" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- selenium.NewTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
