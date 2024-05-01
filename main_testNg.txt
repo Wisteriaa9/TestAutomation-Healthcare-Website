@@ -1,0 +1,792 @@
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import java.util.Set;
+
+
+public class NewTest {
+
+    WebDriver driver;
+
+    @BeforeTest
+    public void setUp() {
+        // Set the path to your ChromeDriver executable
+        System.setProperty("webdriver.chrome.driver","D:\\Softwares\\eclipse\\jee-2024-03\\eclipse\\chromedriver.exe");
+        // Instantiate ChromeDriver
+        driver = new ChromeDriver();
+
+        // OPENING HTML PAGE
+        // Load the HTML file using file:// URL
+        String htmlFilePath = "D:\\Projects\\one-health\\html\\index.html";
+        driver.get(htmlFilePath);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Maximize the browser window
+        driver.manage().window().maximize();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test(priority=1)
+    public void ScrollHomePage() {
+        //SCROLL PAGE DOWN
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        // Get the current scroll position
+        long currentPosition = (long) jsExecutor.executeScript("return window.scrollY;");
+
+        // Scroll down slowly (adjust the loop variables for your desired scrolling behavior)
+        for (long i = currentPosition; i < 2000; i += 10) {
+            // Scroll down by 10 pixels in each iteration
+            jsExecutor.executeScript("window.scrollBy(0, 100);");
+            // Add a short delay to make the scrolling visible (you can adjust the sleep duration)
+            try {
+                Thread.sleep(20);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        //SCROLL PAGE UP
+        Actions actions = new Actions(driver);
+        // Perform multiple arrow down key presses to scroll up slowly
+        for (int i = 0; i < 2000; i+=10) {
+            actions.sendKeys(Keys.ARROW_UP).perform();
+            // Introduce a small delay to make it scroll slowly
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+        
+   @Test(priority=2)
+  public void RegistrationPage() {
+
+        //CLICK SIGNUP/LOGIN BUTTON
+        WebElement loginButton = driver.findElement(By.xpath("//*[@id=\"loginButton \"]"));
+        loginButton.click();
+        try { Thread.sleep(1000); } 
+        catch (InterruptedException e) {  e.printStackTrace();  }
+
+        //GOTO SIGNUP PAGE
+        WebElement gotoSignup = driver.findElement(By.xpath("/html/body/div/div[2]/div/div[1]/form/div/div[7]/label"));
+        gotoSignup.click();
+        try {Thread.sleep(1000);
+        } catch (InterruptedException e) {e.printStackTrace(); }
+        
+
+        //INSIDE SIGNUP PAGE
+        WebElement name = driver.findElement(By.xpath("//*[@id=\"nameSignup\"]"));
+        name.sendKeys("Tom Cruise");
+        try {Thread.sleep(1000);
+        } catch (InterruptedException e) { e.printStackTrace(); }
+
+        WebElement email = driver.findElement(By.xpath("//*[@id=\"emailSignup\"]"));
+        email.sendKeys("Tom Cruise");
+        
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement pass = driver.findElement(By.xpath("//*[@id=\"passSignup\"]"));
+        pass.sendKeys("Tommy");
+        
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement signup = driver.findElement(By.xpath("/html/body/div/div[2]/div/div[2]/form/div/div[4]/input"));
+        signup.click();
+        
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        email.clear();
+        email.sendKeys("tomcruise@gmail.com");
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        signup.click();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        pass.sendKeys("Tommy12345");
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        signup.click();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement successMessage1 = driver.findElement(By.xpath("//*[@id=\"signupSuccess\"]"));
+        Assert.assertTrue(successMessage1.isDisplayed(), "Signup was not successful");
+
+        // AFTER SUCCESSFUL SIGN UP GOTO Home Page
+        WebElement gotoHome = driver.findElement(By.xpath("//*[@id=\"gotohomepage\"]"));
+        gotoHome.click();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+   }
+   
+   @Test(priority=3)
+   public void LoginPage() {
+
+        //TO ENTER EXISTING USER
+        //CLICK SIGNUP/LOGIN BUTTON
+        WebElement loginButton1 = driver.findElement(By.xpath("//*[@id=\"loginButton \"]"));
+        loginButton1.click();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        //LOGIN PAGE
+        WebElement emailLogin = driver.findElement(By.xpath("//*[@id=\"emailLogin\"]"));
+        emailLogin.sendKeys("tomcruise@gmail.com");
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement passLogin = driver.findElement(By.xpath("//*[@id=\"passLogin\"]"));
+        passLogin.sendKeys("Tommy12345");
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement submitLogin = driver.findElement(By.xpath("/html/body/div/div[2]/div/div[1]/form/div/div[4]/input"));
+        submitLogin.click();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+        @Test(priority=4)
+        public void aboutPage() {
+        // GO TO ABOUT PAGE
+        WebElement aboutButton = driver.findElement(By.xpath("//*[@id=\"navbarSupport\"]/ul/li[2]/a"));
+        aboutButton.click();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+}
+
+@Test(priority=5)
+public void doctorsPage() {
+
+        // GO TO DOCTORS PAGE
+        WebElement drButton = driver.findElement(By.xpath("//*[@id=\"navbarSupport\"]/ul/li[3]/a"));
+        drButton.click();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // MAKE AN APPOINTMENT IN DOCTORS PAGE
+        //SCROLL PAGE DOWN
+        JavascriptExecutor jsExecutor3 = (JavascriptExecutor) driver;
+        // Get the current scroll position
+        long currentPosition1 = (long) jsExecutor3.executeScript("return window.scrollY;");
+        // Get the total height of the page
+        long totalHeight = (long) jsExecutor3.executeScript("return Math.max( document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );");
+        // Set the target scroll position to half of the total height
+        long targetPosition = totalHeight / 3;
+
+        // Scroll down slowly until half of the page height is reached
+        for (long i = currentPosition1; i < targetPosition; i += 10) {
+            // Scroll down by 10 pixels in each iteration
+            jsExecutor3.executeScript("window.scrollBy(0, 10);");
+            // Add a short delay to make the scrolling visible (you can adjust the sleep duration)
+            try {
+                Thread.sleep(40);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // ENTER DETAILS IN DOCTORS PAGE
+        WebElement fullName = driver.findElement(By.xpath("//*[@id=\"fullname\"]"));
+        fullName.sendKeys("Tom Cruise");
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement emailAdd = driver.findElement(By.xpath("//*[@id=\"emailapp\"]"));
+        emailAdd.sendKeys("tomcruise@google.com");
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement dateInput = driver.findElement(By.cssSelector("input[type='date']"));
+        dateInput.sendKeys("27-04-2024");
+
+        Select dropdown1 = new Select(driver.findElement(By.xpath("//*[@id=\"departement\"]")));
+        dropdown1.selectByVisibleText("Cardiology");
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Assert.assertEquals(dropdown1.getFirstSelectedOption().getText(), "Cardiology", "Dropdown selection does not match");
+
+        WebElement mobnumber = driver.findElement(By.xpath("//*[@id=\"mobnumber\"]"));
+        mobnumber.sendKeys("+91-1230098654");
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement message = driver.findElement(By.xpath("//*[@id=\"message\"]"));
+        message.sendKeys("If there are any changes or if I need to provide additional information, please let me know.");
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement subRequest = driver.findElement(By.xpath("//*[@id=\"submitRequest \"]"));
+        subRequest.click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        //SUCCESS MESSAGE
+        // Assuming the success message appears in an alert or a pop-up, you can use JavaScriptExecutor
+        JavascriptExecutor jsExecutor1 = (JavascriptExecutor) driver;
+        // Wait for a certain time (adjust the timeout)
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        jsExecutor1.executeScript("alert('Appointment submitted successfully! \\nThank you for choosing our services.');");
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        driver.switchTo().alert().accept();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+@Test (priority=6)
+public void Blog()
+
+{
+	// GO TO BLOG PAGE
+    WebElement BlogButton = driver.findElement(By.xpath("//*[@id=\"navbarSupport\"]/ul/li[4]/a"));
+    BlogButton.click();
+    try {
+        Thread.sleep(2500);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+   
+    //GO FOR BLOG DETAILS 
+    WebElement BlogDetails = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[1]/div/div[1]/div/div[2]/h5/a"));
+    BlogDetails.click();
+    try {
+        Thread.sleep(1000);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+    
+}
+
+@Test (priority=7)
+public void BlogDetails()
+
+{
+	//SCROLL BLOGDETAILS PAGE 
+    JavascriptExecutor jsExecutor3 = (JavascriptExecutor) driver;
+    // Get the current scroll position
+    long currentPosition1 = (long) jsExecutor3.executeScript("return window.scrollY;");
+    // Get the total height of the page
+    long totalHeight = (long) jsExecutor3.executeScript("return Math.max( document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );");
+    // Set the target scroll position to half of the total height
+    long targetPosition = totalHeight / 2;
+
+    // Scroll down slowly until half of the page height is reached
+    for (long i = currentPosition1; i < targetPosition; i += 10) {
+        // Scroll down by 10 pixels in each iteration
+        jsExecutor3.executeScript("window.scrollBy(0, 10);");
+        // Add a short delay to make the scrolling visible (you can adjust the sleep duration)
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+@Test (priority=8)
+public void PostComment()
+{
+	
+	WebElement fullName = driver.findElement(By.xpath("//*[@id=\"name\"]"));
+    fullName.sendKeys("Tom Cruise");
+    try {Thread.sleep(1000);}
+    catch (InterruptedException e) {e.printStackTrace();}
+
+    WebElement emailAdd = driver.findElement(By.xpath("//*[@id=\"email\"]"));
+    emailAdd.sendKeys("tomcruise");
+    try {Thread.sleep(1000);}
+    catch (InterruptedException e) {e.printStackTrace();}
+    
+    WebElement subpost1 = driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[1]/div/form/div[4]/input"));
+    subpost1.click();
+    try {Thread.sleep(2000);}
+    catch (InterruptedException e) {e.printStackTrace();}
+    
+    emailAdd.clear();
+    emailAdd.sendKeys("tomcruise@gamil.com");
+    try {Thread.sleep(2000);}
+    catch (InterruptedException e) {e.printStackTrace();}
+ 
+    
+    WebElement website = driver.findElement(By.xpath("//*[@id=\"website\"]"));
+    website.sendKeys("youttube.com");
+    try {Thread.sleep(1000);}
+    catch (InterruptedException e) {e.printStackTrace();}
+    
+    WebElement subpost2 = driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[1]/div/form/div[4]/input"));
+    subpost2.click();
+    try {Thread.sleep(2000);}
+    catch (InterruptedException e) {e.printStackTrace();}
+    
+    website.clear();
+    website.sendKeys("https://www.youtube.com/");
+    try {Thread.sleep(2000);}
+    catch (InterruptedException e) {e.printStackTrace();}
+  
+    WebElement messageee = driver.findElement(By.xpath("//*[@id=\"message\"]"));
+    messageee.sendKeys("Good news!!");
+    try {Thread.sleep(1000);}
+    catch (InterruptedException e) {e.printStackTrace();}
+    
+    WebElement subpostFinal = driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[1]/div/form/div[4]/input"));
+    subpostFinal.click();
+    try {Thread.sleep(1000);}
+    catch (InterruptedException e) {e.printStackTrace();}
+    
+
+    //POST SUCCESS MESSAGE
+    JavascriptExecutor jsExecutor1 = (JavascriptExecutor) driver;
+    try {Thread.sleep(1000);}
+    catch (InterruptedException e) {e.printStackTrace();}
+    jsExecutor1.executeScript("alert('Comment posted successfully!');");
+    try {Thread.sleep(2000);}
+    catch (InterruptedException e) {e.printStackTrace();}
+    driver.switchTo().alert().accept();
+    try {Thread.sleep(2000);}
+    catch (InterruptedException e) {e.printStackTrace();}
+    
+    
+}
+
+@Test (priority=9)
+public void GoToBlog()
+
+{
+	
+	try {Thread.sleep(2000);}
+    catch (InterruptedException e) {e.printStackTrace();}
+	//GO BACK TO BLOG PAGE 
+	WebElement BlogBack = driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div/nav/ol/li[2]/a"));
+    BlogBack.click();
+    try {Thread.sleep(2000);}
+    catch (InterruptedException e) {e.printStackTrace();}
+    
+}
+
+@Test (priority=10)
+public void Contact()
+
+{
+	
+	//GO BACK TO Contact PAGE 
+	WebElement Contact = driver.findElement(By.xpath("//*[@id=\"navbarSupport\"]/ul/li[5]/a"));
+    Contact.click();  
+}
+
+@Test(priority=11)
+public void ScrollContact()
+{
+	//SCROLL PAGE DOWN
+    JavascriptExecutor jsExecutor3 = (JavascriptExecutor) driver;
+    // Get the current scroll position
+    long currentPosition1 = (long) jsExecutor3.executeScript("return window.scrollY;");
+    // Get the total height of the page
+    long totalHeight = (long) jsExecutor3.executeScript("return Math.max( document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );");
+    // Set the target scroll position to half of the total height
+    long targetPosition = totalHeight / 2;
+
+    // Scroll down slowly until half of the page height is reached
+    for (long i = currentPosition1; i < targetPosition; i += 10) {
+        // Scroll down by 10 pixels in each iteration
+        jsExecutor3.executeScript("window.scrollBy(0, 10);");
+        // Add a short delay to make the scrolling visible (you can adjust the sleep duration)
+        try {  Thread.sleep(40); } catch (InterruptedException e) { e.printStackTrace(); }
+    }
+}
+
+
+@Test(priority=12)
+public void GoogleMap() {
+	
+	WebElement iframe = driver.findElement(By.tagName("iframe"));
+    driver.switchTo().frame(iframe);
+	
+	 try {   Thread.sleep(2000);  } catch (InterruptedException e) { e.printStackTrace();  }
+    WebElement zoomInButton = driver.findElement(By.xpath("/html/body/div/div/div[3]/div[12]/div/div/div/button[1]"));
+    zoomInButton.click();
+    try {   Thread.sleep(2000);  } catch (InterruptedException e) { e.printStackTrace();  }
+
+    // Locate the zoom out button and click it
+    WebElement zoomOutButton = driver.findElement(By.xpath("//*[@id=\"mapDiv\"]/div/div[3]/div[12]/div/div/div/button[2]"));
+    zoomOutButton.click();
+    try {   Thread.sleep(2000);  } catch (InterruptedException e) { e.printStackTrace();  }
+	
+    
+   //View Landscape Maps
+    WebElement landscape = driver.findElement(By.xpath("//*[@id=\"mapDiv\"]/div/div[3]/div[13]/div/div/button"));
+    landscape.click();
+    try {   Thread.sleep(4000);  } catch (InterruptedException e) { e.printStackTrace();}  
+           
+}
+
+
+@Test(priority=13)
+public void testMapNavigation() {
+   
+   
+	String originalTab;
+    originalTab = driver.getWindowHandle();
+    
+  //View Larger Maps
+    WebElement viewLargerMaps = driver.findElement(By.xpath("//*[@id=\"mapDiv\"]/div/div[3]/div[3]/div/div/div/div/div[4]/div/a"));
+    viewLargerMaps.click();
+    try {   Thread.sleep(9000);  } catch (InterruptedException e) { e.printStackTrace();} 
+    
+    
+   // Switch to the new tab
+    for (String tab : driver.getWindowHandles()) {
+        if (!tab.equals(originalTab)) {
+            driver.switchTo().window(tab);
+            break;
+        }
+    }
+    
+    
+    // To switch back to the original tab
+    driver.switchTo().window(originalTab);
+    try {   Thread.sleep(3000);  } catch (InterruptedException e) { e.printStackTrace();}
+}
+
+@Test(priority=14)
+public void ScrollUpContact() {
+
+	 //SCROLL PAGE UP
+    Actions actions = new Actions(driver);
+    // Perform multiple arrow down key presses to scroll up slowly
+    for (int i = 0; i < 2000; i+=10) {
+        actions.sendKeys(Keys.ARROW_UP).perform();
+        // Introduce a small delay to make it scroll slowly
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+	
+}
+
+@Test(priority=15)
+public void GoToHome() {
+	
+	WebElement loginButton = driver.findElement(By.xpath("//*[@id=\"navbarSupport\"]/ul/li[1]/a"));
+    loginButton.click();
+    try { Thread.sleep(1000); } 
+    catch (InterruptedException e) {  e.printStackTrace();  }
+	
+}
+
+
+
+
+@Test(priority=16)
+public void GoToRegistrationPage() {
+	
+	WebElement loginButton = driver.findElement(By.xpath("//*[@id=\"loginButton \"]"));
+    loginButton.click();
+    try { Thread.sleep(1000); } 
+    catch (InterruptedException e) {  e.printStackTrace();  }
+	
+}
+
+@Test(dataProvider = "TestData",priority=17)
+public void TestLogin(String uname, String paswd) {
+	
+
+    WebElement usernameField = driver.findElement(By.xpath("//*[@id=\"emailLogin\"]"));
+    WebElement passwordField = driver.findElement(By.xpath("//*[@id=\"passLogin\"]"));
+    WebElement loginButton = driver.findElement(By.xpath("/html/body/div/div[2]/div/div[1]/form/div/div[4]/input"));
+
+    // Clear existing values in the fields
+    usernameField.clear();
+    passwordField.clear();
+
+    // Type email and password
+    usernameField.sendKeys(uname);
+    passwordField.sendKeys(paswd);
+
+    // Click on the login button
+    loginButton.click();
+    
+    try { Thread.sleep(1500); } 
+    catch (InterruptedException e) {  e.printStackTrace();  }
+
+    // Assertion for successful login
+    Assert.assertTrue(driver.findElement(By.xpath("/html/body/div/div[2]/div/div[1]/form/div/div[4]/input")).isDisplayed());
+    
+    try { Thread.sleep(1500);} catch (InterruptedException e) { e.printStackTrace(); }
+}
+
+
+@DataProvider
+public Object[][] TestData() {
+    Object[][] data = new Object[4][2];
+
+    data[0][0] = "arushi@gmail.com"; 
+    data[0][1] = "password123"; 
+ 
+    data[1][0] = "jaskirat"; 
+    data[1][1] = "123jaskirat";
+    
+    data[2][0] = "jaskirat@gmail.com"; 
+    data[2][1] = "jaskirat"; 
+
+    data[3][0] = "sanjeev@gmail.com"; 
+    data[3][1] = "sanjeev"; 
+
+
+    return data;
+}
+
+@Test(priority=18)
+public void GoToMainPage() {
+	
+	
+	WebElement emailLogin1 = driver.findElement(By.xpath("//*[@id=\"emailLogin\"]"));
+	emailLogin1.clear();
+	emailLogin1.sendKeys("jaskiratKaur@gmail.com");
+    
+	try { Thread.sleep(2000);} catch (InterruptedException e) { e.printStackTrace(); }
+    
+	WebElement passLogin1 = driver.findElement(By.xpath("//*[@id=\"passLogin\"]"));
+	passLogin1.clear();
+    passLogin1.sendKeys("Jaskirat@123");
+    
+    try { Thread.sleep(2000);} catch (InterruptedException e) { e.printStackTrace(); }
+    
+    WebElement submitLogin1 = driver.findElement(By.xpath("/html/body/div/div[2]/div/div[1]/form/div/div[4]/input"));
+    submitLogin1.click();
+    
+    try { Thread.sleep(1000);} catch (InterruptedException e) { e.printStackTrace(); }
+	
+}
+
+
+@Test(priority=19)
+public void DetailsPage() {
+		
+	String originalHandle = driver.getWindowHandle();
+	
+	try { Thread.sleep(2000);} catch (InterruptedException e) { e.printStackTrace(); }
+	
+	//Enter your details Button on index page
+	WebElement DetailsButton = driver.findElement(By.xpath("/html/body/div[2]/div/div/a[2]"));
+    DetailsButton.click();
+	
+	// Open a new tab in the same browser
+    driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "t");
+
+    Set<String> handles = driver.getWindowHandles();
+    for (String handle : handles) {
+        if (!handle.equals(originalHandle)) {
+            driver.switchTo().window(handle);
+            break;
+        }
+    }
+
+    // Load the second HTML file in the new tab
+    String htmlFilePath2 = "http://localhost:5054"; 
+    driver.get(htmlFilePath2);
+    try { Thread.sleep(4000);} catch (InterruptedException e) { e.printStackTrace(); }
+	
+}
+
+@Test(priority=20)
+public void ScrollDetails()
+{
+	//SCROLL PAGE DOWN
+    JavascriptExecutor jsExecutor3 = (JavascriptExecutor) driver;
+    // Get the current scroll position
+    long currentPosition1 = (long) jsExecutor3.executeScript("return window.scrollY;");
+    // Get the total height of the page
+    long totalHeight = (long) jsExecutor3.executeScript("return Math.max( document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );");
+    // Set the target scroll position to half of the total height
+    long targetPosition = totalHeight / 4;
+
+    // Scroll down slowly until half of the page height is reached
+    for (long i = currentPosition1; i < targetPosition; i += 10) {
+        jsExecutor3.executeScript("window.scrollBy(0, 10);");
+        try {  Thread.sleep(40); } catch (InterruptedException e) { e.printStackTrace(); }
+    }
+}
+
+@Test(priority=21)
+public void EnterDeatils()
+{
+	try {  Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+	
+	WebElement dName = driver.findElement(By.xpath("//*[@id=\"name\"]"));
+    dName.sendKeys("Diljit Dosanjh");
+    
+    try {  Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+	
+    WebElement dAge = driver.findElement(By.xpath("//*[@id=\"age\"]"));
+    dAge.sendKeys("26");
+    
+    try {  Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+    
+    WebElement dBlood = driver.findElement(By.xpath("//*[@id=\"bloodgroup\"]"));
+    dBlood.sendKeys("AB +");
+    
+    try {  Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+    
+    WebElement dGender = driver.findElement(By.xpath("//*[@id=\"gender\"]"));
+    dGender.sendKeys("Female");
+    
+    try {  Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+    
+    WebElement dHeigth = driver.findElement(By.xpath("//*[@id=\"height\"]"));
+    dHeigth.sendKeys("155");
+    
+    try {  Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+    
+    WebElement dWeight = driver.findElement(By.xpath("//*[@id=\"weight\"]"));
+    dWeight.sendKeys("52");
+    
+    try {  Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+    
+    WebElement dAllergy = driver.findElement(By.xpath("//*[@id=\"allergies\"]"));
+    dAllergy.sendKeys("Shellfish and peanuts allergies");
+    
+    try {  Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+    
+    WebElement submitDetails = driver.findElement(By.xpath("//*[@id=\"submit\"]"));
+    submitDetails.click();
+    
+    try {  Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+}
+
+@Test(priority=22)
+public void ConfirmationPage()
+{
+	//SCROLL PAGE DOWN
+    JavascriptExecutor jsExecutor3 = (JavascriptExecutor) driver;
+    // Get the current scroll position
+    long currentPosition1 = (long) jsExecutor3.executeScript("return window.scrollY;");
+    // Get the total height of the page
+    long totalHeight = (long) jsExecutor3.executeScript("return Math.max( document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );");
+    // Set the target scroll position to half of the total height
+    long targetPosition = totalHeight / 4;
+
+    // Scroll down slowly until half of the page height is reached
+    for (long i = currentPosition1; i < targetPosition; i += 10) {
+        jsExecutor3.executeScript("window.scrollBy(0, 10);");
+        try {  Thread.sleep(40); } catch (InterruptedException e) { e.printStackTrace(); }
+    }
+        
+      //SCROLL PAGE UP
+        Actions actions = new Actions(driver);
+        // Perform multiple arrow down key presses to scroll up slowly
+        for (int i = 0; i < 2000; i+=10) {
+            actions.sendKeys(Keys.ARROW_UP).perform();
+            // Introduce a small delay to make it scroll slowly
+            try { Thread.sleep(50);} catch (InterruptedException e) { e.printStackTrace(); }
+        }
+}
+
+    @AfterTest
+    public void tearDown() {
+        driver.quit();
+    }
+}
+
+
